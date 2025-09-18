@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성간 해적 연맹 - 우주의 자유로운 항해자들</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 50%, #2a2a5a 100%);
+            color: #e0e0f0;
+            min-height: 100vh;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+                radial-gradient(1px 1px at 40px 70px, #fff, transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+                radial-gradient(1px 1px at 160px 30px, #fff, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: sparkle 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes sparkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 2px solid #4a4a8a;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 3em;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin: 0;
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            color: #ffd93d;
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        .nav-menu {
+            background: rgba(20, 20, 40, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-menu li {
+            margin: 0 20px;
+        }
+        
+        .nav-menu a {
+            color: #6bc5f2;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: #ffd93d;
+        }
+        
+        .section {
+            background: rgba(30, 30, 60, 0.7);
+            margin: 30px 0;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #ff6b6b;
+            backdrop-filter: blur(5px);
+        }
+        
+        h2 {
+            color: #ffd93d;
+            border-bottom: 2px solid #4a4a8a;
+            padding-bottom: 10px;
+            font-size: 2em;
+        }
+        
+        h3 {
+            color: #6bc5f2;
+            margin-top: 25px;
+        }
+        
+        .pirate-card {
+            background: rgba(40, 40, 80, 0.8);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 1px solid #6bc5f2;
+        }
+        
+        .pirate-name {
+            color: #ff6b6b;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .ship-specs {
+            background: rgba(20, 20, 40, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid #ffd93d;
+        }
+        
+        .warning-box {
+            background: rgba(255, 107, 107, 0.2);
+            border: 2px solid #ff6b6b;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .stat-item {
+            background: rgba(40, 40, 80, 0.6);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #4a4a8a;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            color: #ffd93d;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 2px solid #4a4a8a;
+            margin-top: 50px;
+            color: #a0a0c0;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .nav-menu ul { flex-direction: column; }
+            .nav-menu li { margin: 5px 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    
+    <div class="container">
+        <header>
+            <h1>🚀 성간 해적 연맹 🏴‍☠️</h1>
+            <div class="subtitle">은하계를 누비는 자유로운 항해자들의 전설</div>
+        </header>
+        
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#history">역사</a></li>
+                <li><a href="#famous">유명한 해적들</a></li>
+                <li><a href="#ships">해적선</a></li>
+                <li><a href="#territory">영역</a></li>
+                <li><a href="#code">해적 강령</a></li>
+            </ul>
+        </nav>
+        
+        <section id="history" class="section">
+            <h2>🌌 성간 해적의 역사</h2>
+            <p>서기 2387년, 인류가 워프 드라이브 기술을 완성하고 은하계 전역으로 확산하기 시작했을 때, 자유와 모험을 갈망하는 이들이 모여 최초의 성간 해적 집단을 결성했습니다.</p>
+            
+            <h3>⭐ 주요 시대</h3>
+            <ul>
+                <li><strong>황금기 (2387-2450)</strong>: 최초의 해적단들이 등장하며 무법지대 형성</li>
+                <li><strong>대전쟁 시대 (2451-2489)</strong>: 은하 제국과의 대규모 충돌</li>
+                <li><strong>협정 시대 (2490-현재)</strong>: 상호 불가침 조약 체결 후 평화 공존</li>
+            </ul>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">247</div>
+                    <div>활성 해적단</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1,834</div>
+                    <div>총 해적선 수</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">42</div>
+                    <div>지배 항성계</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">156,000</div>
+                    <div>연맹 소속 해적 수</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="famous" class="section">
+            <h2>🏴‍☠️ 전설적인 해적들</h2>
+            
+            <div class="pirate-card">
+                <div class="pirate-name">캡틴 제나 스타월커</div>
+                <p><strong>별명:</strong> 은하의 여왕</p>
+                <p><strong>활동 기간:</strong> 2401-2456</p>
+                <p><strong>업적:</strong> 최초로 은하 중심부 블랙홀 주변을 항해한 해적. 전설적인 보물선 '코스믹 포춘'을 습격하여 역사상 최대 규모의 전리품을 획득했습니다.</p>
+                <p><strong>애용 함선:</strong> '스텔라 리벤지' - 개조된 초고속 순양함</p>
+            </div>
+            
+            <div class="pirate-card">
+                <div class="pirate-name">캡틴 맥스 보이드하트</div>
+                <p><strong>별명:</strong> 공허의 악마</p>
+                <p><strong>활동 기간:</strong> 2445-현재</p>
+                <p><strong>업적:</strong> 현재 활동 중인 최고령 해적 캡틴. 워프 공간에서의 매복 전술의 창시자로, 50년간 단 한 번도 체포되지 않은 전설의 인물입니다.</p>
+                <p><strong>애용 함선:</strong> '다크 노바' - 스텔스 기능을 갖춘 대형 전함</p>
+            </div>
+            
+            <div class="pirate-card">
+                <div class="pirate-name">캡틴 루나 네뷸라</div>
+                <p><strong>별명:</strong> 성운의 춤꾼</p>
+                <p><strong>활동 기간:</strong> 2478-현재</p>
+                <p><strong>업적:</strong> 가장 젊은 해적 연맹 의장으로 선출된 천재 전략가. 외교적 해결을 선호하며 '명예로운 약탈'이라는 새로운 패러다임을 제시했습니다.</p>
+                <p><strong>애용 함선:</strong> '미스트 댄서' - 고기동성 정찰함</p>
+            </div>
+        </section>
+        
+        <section id="ships" class="section">
+            <h2>🛸 해적선의 종류</h2>
+            
+            <div class="ship-specs">
+                <h3>⚡ 레이더 급 (Raider Class)</h3>
+                <p><strong>용도:</strong> 고속 습격 및 정찰</p>
+                <p><strong>특징:</strong> 초고속 엔진, 경량 무장, 스텔스 기능</p>
+                <p><strong>승무원:</strong> 3-8명</p>
+                <p><strong>대표 모델:</strong> 스위프트 팽, 섀도우 스트라이크</p>
+            </div>
+            
+            <div class="ship-specs">
+                <h3>⚔️ 마로더 급 (Marauder Class)</h3>
+                <p><strong>용도:</strong> 중형 상선 습격</p>
+                <p><strong>특징:</strong> 균형잡힌 화력과 방어력, 넓은 화물 공간</p>
+                <p><strong>승무원:</strong> 15-30명</p>
+                <p><strong>대표 모델:</strong> 크림슨 리퍼, 보이드 프레데터</p>
+            </div>
+            
+            <div class="ship-specs">
+                <h3>💀 드레드노트 급 (Dreadnought Class)</h3>
+                <p><strong>용도:</strong> 대규모 작전 및 요새 공격</p>
+                <p><strong>특징:</strong> 최대 화력, 중장갑, 소형함 탑재 가능</p>
+                <p><strong>승무원:</strong> 100-500명</p>
+                <p><strong>대표 모델:</strong> 데스 스타 크러셔, 갤럭틱 레이지</p>
+            </div>
+        </section>
+        
+        <section id="territory" class="section">
+            <h2>🌠 해적 영역</h2>
+            <p>성간 해적 연맹은 은하계 외곽 지역의 42개 항성계를 지배하고 있으며, 이 지역은 '자유 구역(Free Zone)'이라 불립니다.</p>
+            
+            <h3>주요 거점</h3>
+            <ul>
+                <li><strong>토르투가 프라임</strong>: 연맹 본부가 위치한 수도 행성</li>
+                <li><strong>스컬 네뷸라</strong>: 해적선 수리 및 개조 기지</li>
+                <li><strong>보물섬 스테이션</strong>: 최대 규모의 밀수품 거래소</li>
+                <li><strong>블랙 코브 아스테로이드</strong>: 해적 아카데미 소재지</li>
+            </ul>
+        </section>
+        
+        <section id="code" class="section">
+            <h2>📜 해적 강령</h2>
+            <p>모든 성간 해적은 다음의 강령을 준수해야 합니다:</p>
+            
+            <ol>
+                <li><strong>명예로운 약탈</strong>: 무력한 민간인에게는 해를 끼치지 않는다</li>
+                <li><strong>동료애</strong>: 같은 해적단 동료는 끝까지 지킨다</li>
+                <li><strong>자유의 원칙</strong>: 강제 징집은 금지하며, 모든 가입은 자발적이어야 한다</li>
+                <li><strong>공정한 분배</strong>: 전리품은 기여도에 따라 공정하게 나눈다</li>
+                <li><strong>중립 지역 존중</strong>: 의료선과 구조선은 공격하지 않는다</li>
+                <li><strong>환경 보호</strong>: 행성 생태계를 파괴하는 행위는 금지한다</li>
+            </ol>
+            
+            <div class="warning-box">
+                <strong>⚠️ 경고 ⚠️</strong><br>
+                해적 강령을 위반하는 자는 연맹에서 추방되며,<br>
+                모든 해적단의 추적 대상이 됩니다.
+            </div>
+        </section>
+        
+        <footer>
+            <p>© 2525 성간 해적 연맹. 모든 권리 보유.</p>
+            <p>"자유로운 별들 사이에서, 우리는 영원히 항해한다"</p>
+            <p style="font-size: 0.8em; margin-top: 20px;">
+                이 웹사이트는 교육 목적으로 제작된 가상의 콘텐츠입니다.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
