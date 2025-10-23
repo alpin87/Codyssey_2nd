@@ -103,20 +103,30 @@ def main():
         return
     
     # HTML 템플릿
-    html = '''<!DOCTYPE html>
-<html><head><meta charset="UTF-8">
+    html = '''
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8">
+
 <style>
 body{{font-family:'Malgun Gothic',Arial;margin:0;padding:0}}
 .box{{max-width:600px;margin:20px auto;border:1px solid #ddd}}
 .head{{background:#03C75A;color:#fff;padding:20px;text-align:center}}
 .body{{padding:30px}}
-</style></head>
-<body><div class="box">
+</style>
+</head>
+
+<body>
+<div class="box">
 <div class="head"><h1>네이버 메일</h1></div>
 <div class="body"><p><strong>{name}</strong>님 안녕하세요!</p>
 <p>네이버 SMTP를 통한 HTML 메일 발송 테스트입니다.</p>
 <ul><li>개인화된 메시지</li><li>HTML 스타일링</li><li>CSV 기반 발송</li></ul>
-</div></div></body></html>'''
+</div>
+</div>
+</body>
+</html>
+'''
     
     # 발송 방식 선택
     print('\n[발송 방식]')
