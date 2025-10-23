@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 """HTML 메일 발송 시스템 - 네이버 기준."""
 
 import smtplib
