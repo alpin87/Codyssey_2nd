@@ -4,7 +4,7 @@ Pydantic 스키마 모델 정의
 API 요청/응답에 사용되는 데이터 모델을 정의합니다.
 """
 from pydantic import BaseModel
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 from datetime import datetime
 
 
@@ -43,3 +43,19 @@ class ApiResponse(BaseModel):
     message: Optional[str] = None
     data: Optional[Dict[str, Any]] = None
 
+
+# --- 과제 요구사항으로 추가된 스키마 ---
+class Question(BaseModel):
+    """
+    새로 추가된 질문 스키마 (과제 요구사항)
+    
+    데이터 검증 및 직렬화를 담당합니다.
+    """
+    id: int
+    subject: str
+    content: str
+    create_date: datetime
+
+    class Config:
+        # ORM 객체(SQLAlchemy 등)를 Pydantic 모델로 변환 허용
+        from_attributes = True
