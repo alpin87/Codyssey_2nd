@@ -3,7 +3,7 @@ Pydantic 스키마 모델 정의
 
 API 요청/응답에 사용되는 데이터 모델을 정의합니다.
 """
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 from typing import Optional, Dict, Any, List
 from datetime import datetime
 
@@ -12,6 +12,13 @@ class QuestionCreate(BaseModel):
     """질문 생성 요청 모델"""
     subject: str
     content: str
+
+    # [추가됨] 제목과 내용은 빈 값을 허용하지 않도록 검증
+    @field_validator('subject', 'content')
+    def not_empty(cls, v):
+        if not v or not v.strip():
+            raise ValueError('빈 값은 허용되지 않습니다.')
+        return v
 
 
 class QuestionUpdate(BaseModel):
@@ -44,7 +51,6 @@ class ApiResponse(BaseModel):
     data: Optional[Dict[str, Any]] = None
 
 
-# --- 과제 요구사항으로 추가된 스키마 ---
 class Question(BaseModel):
     """
     새로 추가된 질문 스키마 (과제 요구사항)

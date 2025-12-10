@@ -1,13 +1,13 @@
 """
 질문(Question) 라우터 정의
 
-질문 목록 조회 API 엔드포인트를 정의합니다.
+질문 목록 조회 및 등록 API 엔드포인트를 정의합니다.
 """
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 from database import get_db
-from schemas import ApiResponse, Question  # Question 스키마 추가 임포트
-from domain.question.service import get_questions
+from schemas import ApiResponse, Question, QuestionCreate
+from domain.question.service import get_questions, create_question
 
 router = APIRouter(prefix='/api/question')
 
@@ -48,3 +48,19 @@ def question_list(
                 'count': len(questions)
             }
         )
+
+
+# [추가됨] 질문 등록 라우터
+@router.post('/create', status_code=status.HTTP_204_NO_CONTENT)
+def question_create(_question: QuestionCreate, db: Session = Depends(get_db)):
+    """
+    질문을 등록합니다.
+
+    Args:
+        _question: 등록할 질문의 제목과 내용 (QuestionCreate 스키마)
+        db: 데이터베이스 세션 (의존성 주입)
+    
+    Returns:
+        None (204 No Content)
+    """
+    create_question(db, _question)
